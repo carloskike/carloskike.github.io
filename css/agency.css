@@ -555,7 +555,7 @@ aside.clients img {
 }
 section#contact {
   background-color: #222222;
-  background-image: url('../img/map-image.png');
+  background-image: url('../img/cats.png');
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -566,10 +566,18 @@ section#contact .form-group {
   margin-bottom: 25px;
 }
 section#contact .form-group input,
+section#contact .form-group select,
+section#contact .form-group option,
 section#contact .form-group textarea {
   padding: 20px;
 }
 section#contact .form-group input.form-control {
+  height: auto;
+}
+section#contact .form-group select.form-control {
+  height: auto;
+}
+section#contact .form-group option.form-control {
   height: auto;
 }
 section#contact .form-group textarea.form-control {
