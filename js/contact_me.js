@@ -3,31 +3,34 @@
 function sendNotification(ev){
     ev.preventDefault();
     if(validate_fields()){
-
-        var name = $("input#name").val();
-        var email = $("input#email").val();
-        var type = $("input#type").val();
-        var message = $("textarea#message").val();
-
         $.ajax({
-            url: "http://localhost:3000/save_information",
+            url: "https://helpet-landing.herokuapp.com/save_information",
             type: "POST",
             cache: false,
             data: {
-                name: name,
-                email: email,
-                type: type,
-                about: message
+                name: $("input#name").val(),
+                email: $("input#email").val(),
+                type_user: $('#type :selected').val(),
+                about: $("textarea#message").val()
             },            
             success: function() {
                 $("input#name").val('');
                 $("input#email").val('');
                 $("#type").val('none');
                 $("textarea#message").val('');
-                alert('Todo bien')
+                swal("HECHO", 'GRACIAS POR BRINDARNOS TU INFORMACIÓN')
+                swal(
+                  'INFORMACIÓN REGISTRADA',
+                  'GRACIAS POR INTERESARTE EN ESTA LABOR PRONTO SEGUIRAS RECIBIENDO MAS INFORMACIÓN',
+                  'success'
+                )
             },
             error: function() {
-                alert('Error')
+                swal(
+                  'HA OCURRIDO UN ERROR',
+                  'ESTAREMOS PENDIENTE DE ESTE ERROR, AGRADECERIAMOS SI PUEDES INTENTARLO MAS TARDE',
+                  'error'
+                )
             },
         });
     }
